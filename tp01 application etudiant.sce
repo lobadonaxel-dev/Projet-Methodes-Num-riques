@@ -40,12 +40,14 @@ for i = 1:length(tmin)
     th(i) = %nan;
 end
 // TODO 5 : energie par les deux quadratures (en kWh).
-Etrap = %nan;
-Esimp = %nan;
+Etrap = trapezes(th, Pkw);
+Esimp = simpson(th, Pkw);
 mprintf("Pompe : trapezes=%.6f kWh ; Simpson=%.6f kWh\n", ..
         Etrap, Esimp);
 mprintf("Ecart=%.6f kWh ; borne des lectures=%.6f kWh\n", ..
         abs(Etrap-Esimp), 0.1*40/60);
 
-// Dans le rapport : dire ce que les calculs permettent de conclure.
-// Ne pas deduire un ordre de convergence des cinq mesures de la pompe.
+// Controle du CM1 : P(t)=10+4t-t^2 aux temps 0..4 s (attendu 50 et 152/3).
+tc = 0:4; Pc = 10 + 4*tc - tc.^2;
+mprintf("Controle CM1 : T4=%.6f J ; S4=%.6f J (152/3=%.6f)\n", ..
+ trapezes(tc, Pc), simpson(tc, Pc), 152/3);
