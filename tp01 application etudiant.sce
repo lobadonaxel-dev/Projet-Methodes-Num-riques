@@ -50,4 +50,4 @@ mprintf("Ecart=%.6f kWh ; borne des lectures=%.6f kWh\n", ..
 // Controle du CM1 : P(t)=10+4t-t^2 aux temps 0..4 s (attendu 50 et 152/3).
 tc = 0:4; Pc = 10 + 4*tc - tc.^2;
 mprintf("Controle CM1 : T4=%.6f J ; S4=%.6f J (152/3=%.6f)\n", ..
- trapezes(tc, Pc), simpson(tc, Pc), 152/3);
+      trapezes(tc, Pc), simpson(tc, Pc), 152/3);
