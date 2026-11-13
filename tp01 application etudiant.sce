@@ -25,8 +25,8 @@ for k = 1:length(ns)
 end
 for k = 1:length(ns)-1
     // TODO 3 : mesurer les ordres entre n et 2n.
-    pT = %nan;
-    pS = %nan;
+    pT = ordre_observe(errT(k), errT(k+1));
+    pS = ordre_observe(errS(k), errS(k+1));
     mprintf("n=%d -> %d : pT=%.3f pS=%.3f\n", ..
             ns(k), ns(k+1), pT, pS);
 end
@@ -37,7 +37,7 @@ Pkw = [2.0 2.6 3.0 2.5 1.9];
 th = zeros(1, length(tmin));
 for i = 1:length(tmin)
     // TODO 4 : convertir les minutes en heures.
-    th(i) = %nan;
+    th(i) = tmin(i) / 60;
 end
 // TODO 5 : energie par les deux quadratures (en kWh).
 Etrap = trapezes(th, Pkw);
